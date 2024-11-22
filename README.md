@@ -14,14 +14,19 @@ The **Authorization Server** is a flexible and secure service designed to handle
 
 ## Getting Started
 
-### Step 1: Configure Environment Variables
+### Step 1: Install Dependencies
+
+Run the following command to install all required dependencies:  
+`npm install`
+
+### Step 2: Configure Environment Variables
 
 1. Copy the contents of `.env.example` into a new `.env` file in the root directory.  
 2. Generate secure tokens for `ACCESS_TOKEN_SECRET` and `REFRESH_TOKEN_SECRET` by running the command:  
    `npm run jwt-secret`  
 3. Add the generated values to the corresponding keys in the `.env` file.
 
-### Step 2: Start the PostgreSQL Container
+### Step 3: Start the PostgreSQL Container
 
 Run the following command to start the PostgreSQL container:  
 `./start.sh`  
