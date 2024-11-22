@@ -1,0 +1,1 @@
+ALTER TABLE "users" ALTER COLUMN "user_metadata" SET DATA TYPE json;
