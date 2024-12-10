@@ -23,8 +23,7 @@ Run the following command to install all required dependencies:
 
 1. Copy the contents of `.env.example` into a new `.env` file in the root directory.  
 2. Generate secure tokens for `ACCESS_TOKEN_SECRET` and `REFRESH_TOKEN_SECRET` by running the command:  
-   `npm run jwt-secret`  
-3. Add the generated values to the corresponding keys in the `.env` file.
+   `npm run jwt-secret`. The keys will be automatically inserted in the `.env` file.
 
 ### Step 3: Start the PostgreSQL Container
 
