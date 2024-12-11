@@ -12,25 +12,17 @@ The **Authorization Server** is a flexible and secure service designed to handle
 
 ---
 
+## Requirements
+
+- Docker
+- Node.js 20
+
+---
+
 ## Getting Started
 
-### Step 1: Install Dependencies
-
-Run the following command to install all required dependencies:  
-`npm install`
-
-### Step 2: Configure Environment Variables
-
-1. Copy the contents of `.env.example` into a new `.env` file in the root directory.  
-2. Generate secure tokens for `ACCESS_TOKEN_SECRET` and `REFRESH_TOKEN_SECRET` by running the command:  
-   `npm run jwt-secret`. The keys will be automatically inserted in the `.env` file.
-
-### Step 3: Start the PostgreSQL Container
-
-Run the following command to start the PostgreSQL container:  
+Run the following command to start both the PostgreSQL and the Dockerized application containers:  
 `./start.sh`  
-
-This will initialize the database using the environment variables defined in the `.env` file.
 
 ---
 
