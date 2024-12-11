@@ -1,4 +1,9 @@
 #!/bin/bash
+if ! [ -f ".env.example" ]; then
+  echo ".env.example file not found, stopping script"
+  exit 1
+fi
+
 
 if ! [ -f ".env" ]; then
   echo ".env file not found, copying from .env.example"

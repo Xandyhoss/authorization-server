@@ -11,6 +11,8 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - "${POSTGRES_PORT}:5432"
+    networks:
+      - auth_network
   app:
     container_name: 'authentication_server'
     build:
@@ -18,3 +20,12 @@ services:
       dockerfile: Dockerfile
     ports:
       - "${HOST_PORT}:3000"
+    networks:
+      - auth_network
+    depends_on:
+      - db
+
+networks:
+  auth_network:
+    driver: bridge
+    name: auth_network
