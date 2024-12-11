@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if ! [ -d ".env" ]; then
+if ! [ -f ".env" ]; then
   echo ".env file not found, copying from .env.example"
   cp .env.example .env
 fi
