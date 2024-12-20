@@ -1,21 +1,20 @@
-#!/bin/bash
-if ! [ -f ".env.example" ]; then
-  echo ".env.example file not found, stopping script"
-  exit 1
-fi
+# #!/bin/bash
+# if ! [ -f ".env.example" ]; then
+#   echo ".env.example file not found, stopping script"
+#   exit 1
+# fi
 
-
-if ! [ -f ".env" ]; then
-  echo ".env file not found, copying from .env.example"
-  cp .env.example .env
-fi
+# if ! [ -f ".env" ]; then
+#   echo ".env file not found, copying from .env.example"
+#   cp .env.example .env
+# fi
 
 export $(grep -v '^#' .env | xargs)
 
-if [ -z "$ACCESS_TOKEN_SECRET" ] || [ -z "$REFRESH_TOKEN_SECRET" ]; then
-  echo "Generating new secrets..."
-  npm run jwt-secret
-fi
+# if [ -z "$ACCESS_TOKEN_SECRET" ] || [ -z "$REFRESH_TOKEN_SECRET" ]; then
+#   echo "Generating new secrets..."
+#   npm run jwt-secret
+# fi
 
 echo "Building docker-compose"
 docker-compose build

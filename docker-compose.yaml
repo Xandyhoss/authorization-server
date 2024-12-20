@@ -18,12 +18,19 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "${HOST_PORT}:3000"
     networks:
       - auth_network
     depends_on:
       - db
+    environment:
+      HOST_PORT: ${HOST_PORT}
+      ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET}
+      ACCESS_TOKEN_EXPIRATION: ${ACCESS_TOKEN_EXPIRATION}
+      REFRESH_TOKEN_SECRET: ${REFRESH_TOKEN_SECRET}
+      REFRESH_TOKEN_EXPIRATION: ${REFRESH_TOKEN_EXPIRATION} 
+      FRONTEND_DOMAIN: ${FRONTEND_DOMAIN}
+    ports:
+      - "${HOST_PORT}:3000"
 
 networks:
   auth_network:
