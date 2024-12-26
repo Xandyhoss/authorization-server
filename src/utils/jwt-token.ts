@@ -23,8 +23,9 @@ export class JWTTokenUtils {
     res.cookie(tokenType, token, {
       domain: process.env.FRONTEND_DOMAIN || "localhost",
       httpOnly: true,
-      secure: true,
-      sameSite: "none",
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", 
+      path: "/",
     });
   };
 }

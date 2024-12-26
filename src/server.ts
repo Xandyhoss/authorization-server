@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import {
   authenticate,
   createUser,
@@ -19,6 +20,12 @@ const PORT = process.env.HOST_PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_DOMAIN || "http://localhost:3000",
+    credentials: true,
+  })
+);
 
 app.get("/", (_req: Request, res: Response) => {
   res.json({
