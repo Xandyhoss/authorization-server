@@ -21,10 +21,10 @@ export class JWTTokenUtils {
 
   static setCookie = (tokenType: string, token: string, res: Response) => {
     res.cookie(tokenType, token, {
-      domain: process.env.FRONTEND_DOMAIN || "localhost",
+      domain: process.env.SET_COOKIE_DOMAIN || "localhost",
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "none", 
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       path: "/",
     });
   };

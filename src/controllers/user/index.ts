@@ -93,7 +93,7 @@ export const login = async (req: Request, res: Response): Promise<any> => {
 };
 
 export const logout = async (req: Request, res: Response): Promise<any> => {
-  const refreshToken = req.cookies.refreshToken;
+  const refreshToken = req.cookies.refresh_token;
 
   if (!refreshToken) {
     return res.status(400).json({ message: "Missing refresh token" });
