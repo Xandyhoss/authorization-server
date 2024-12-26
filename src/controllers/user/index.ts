@@ -30,7 +30,7 @@ export const login = async (req: Request, res: Response): Promise<any> => {
     .select({
       id: usersTable.id,
       login: usersTable.login,
-      userData: usersTable.user_metadata,
+      user_metadata: usersTable.user_metadata,
     })
     .from(usersTable)
     .where(
