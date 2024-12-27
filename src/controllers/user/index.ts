@@ -215,7 +215,7 @@ export const refresh = async (req: Request, res: Response): Promise<any> => {
             .select({
               id: usersTable.id,
               login: usersTable.login,
-              userData: usersTable.user_metadata,
+              user_metadata: usersTable.user_metadata,
             })
             .from(usersTable)
             .where(eq(usersTable.id, decodedRefreshToken.id));
@@ -247,8 +247,8 @@ export const refresh = async (req: Request, res: Response): Promise<any> => {
             return res.status(200).json({
               user: user[0],
               token: {
-                accessToken: jwtToken,
-                refreshToken: generatedRefreshToken,
+                access_token: jwtToken,
+                refresh_token: generatedRefreshToken,
               },
             });
           } catch (error) {
@@ -285,7 +285,7 @@ export const refresh = async (req: Request, res: Response): Promise<any> => {
         .select({
           id: usersTable.id,
           login: usersTable.login,
-          userData: usersTable.user_metadata,
+          user_metadata: usersTable.user_metadata,
         })
         .from(usersTable)
         .where(eq(usersTable.id, decodedRefreshToken.id));
@@ -297,7 +297,7 @@ export const refresh = async (req: Request, res: Response): Promise<any> => {
       return res.status(200).json({
         user: user[0],
         token: {
-          accessToken: jwtToken,
+          access_token: jwtToken,
         },
       });
     }
