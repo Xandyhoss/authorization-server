@@ -69,7 +69,7 @@ export const login = async (req: Request, res: Response): Promise<any> => {
   const generatedRefreshToken = JWTTokenUtils.generateRefreshToken(user[0]);
 
   const refreshTokenData: typeof refreshTokensTable.$inferInsert = {
-    refreshToken: generatedRefreshToken,
+    refreshToken: EncryptionUtils.encryptData(generatedRefreshToken),
     userId: user[0].id,
   };
 
@@ -102,7 +102,7 @@ export const logout = async (req: Request, res: Response): Promise<any> => {
   try {
     await db
       .delete(refreshTokensTable)
-      .where(eq(refreshTokensTable.refreshToken, refreshToken));
+      .where(eq(refreshTokensTable.refreshToken, EncryptionUtils.encryptData(refreshToken)));
   } catch (error) {
     console.log("Error excluding refresh token: ", error);
     return res
@@ -187,7 +187,7 @@ export const refresh = async (req: Request, res: Response): Promise<any> => {
       const fetchedRefreshToken = await db
         .select()
         .from(refreshTokensTable)
-        .where(and(eq(refreshTokensTable.refreshToken, refresh_token)));
+        .where(and(eq(refreshTokensTable.refreshToken, EncryptionUtils.encryptData(refresh_token))));
 
       if (err) {
         if (err.name === "TokenExpiredError") {
@@ -226,14 +226,14 @@ export const refresh = async (req: Request, res: Response): Promise<any> => {
           );
 
           const refreshTokenData: typeof refreshTokensTable.$inferInsert = {
-            refreshToken: generatedRefreshToken,
+            refreshToken: EncryptionUtils.encryptData(generatedRefreshToken),
             userId: user[0].id,
           };
 
           try {
             await db
               .delete(refreshTokensTable)
-              .where(eq(refreshTokensTable.refreshToken, refresh_token));
+              .where(eq(refreshTokensTable.refreshToken, EncryptionUtils.encryptData(refresh_token)));
 
             await db.insert(refreshTokensTable).values(refreshTokenData);
 
