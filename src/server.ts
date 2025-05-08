@@ -16,7 +16,7 @@ import {
 dotenv.config();
 
 const app = express();
-const PORT = process.env.HOST_PORT || 3000;
+const PORT = 3000;
 
 app.use(bodyParser.json());
 app.use(cookieParser());
