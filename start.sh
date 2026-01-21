@@ -17,10 +17,10 @@ if [ -z "$ACCESS_TOKEN_SECRET" ] || [ -z "$REFRESH_TOKEN_SECRET" ]; then
 fi
 
 echo "Building docker-compose"
-docker-compose build
+docker compose build
 
 echo "Starting docker-compose"
-docker-compose up -d
+docker compose up -d
 
 echo "Aguardando o PostgreSQL iniciar..."
 until docker exec $POSTGRES_CONTAINER_NAME pg_isready -U $POSTGRES_USER; do

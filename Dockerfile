@@ -12,4 +12,4 @@ EXPOSE 3000
 
 RUN npm run build
 
-CMD sh -c "npm run generate && npm run migrate && npm run start"
+CMD ["sh", "-c", "npm run generate && npm run migrate && npm run start"]
